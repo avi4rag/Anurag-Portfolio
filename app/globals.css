@@ -528,7 +528,7 @@ h6 {
   position: absolute;
   top: 168px;
   left: -12px;
-  z-index: 1;
+  z-index: 3;
   width: min(382px, 42vw);
   aspect-ratio: 382 / 115;
   height: auto;
@@ -566,25 +566,63 @@ h6 {
   position: absolute;
   top: 10%;
   left: 27.5%;
+  width: 45%;
   color: #433f38;
   font: clamp(7px, 0.7vw, 10px) monospace;
 }
 .reference-player-label small {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 38%;
-  margin-top: 6%;
+  position: absolute;
+  top: 68%;
   font-size: clamp(6px, 0.55vw, 8px);
 }
-.reference-player-label i {
-  display: block;
-  width: 57%;
+.reference-player-label small:first-of-type {
+  left: 0;
+}
+.reference-player-label small:last-of-type {
+  right: 0;
+}
+.reference-progress {
+  position: absolute;
+  top: 39%;
+  left: 0;
+  width: 100%;
+  height: clamp(8px, 1vw, 12px);
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 4;
+}
+.reference-progress-track,
+.reference-progress-fill {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
   height: clamp(2px, 0.25vw, 4px);
-  border-radius: 4px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+.reference-progress-track {
   background: #655f56;
 }
-.reference-player button {
+.reference-progress-fill {
+  right: auto;
+  background: #3d3a2d;
+}
+.reference-progress-knob {
+  position: absolute;
+  top: 50%;
+  width: clamp(8px, 1.2vw, 14px);
+  aspect-ratio: 1;
+  border: 2px solid #c8c4ba;
+  border-radius: 50%;
+  background: #f7f3e9;
+  box-shadow: 0 1px 3px rgba(48, 45, 35, 0.3);
+  transform: translate(-50%, -50%);
+}
+.reference-play-button {
   position: absolute;
   left: 50%;
   bottom: 9%;
@@ -598,6 +636,45 @@ h6 {
   color: #f8f1df;
   background: #454232;
   transform: translateX(-50%);
+  z-index: 4;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+.reference-play-button:hover:not(:disabled) {
+  background: #5c583e;
+  transform: translateX(-50%) scale(1.06);
+}
+.reference-play-button:disabled {
+  cursor: wait;
+  opacity: 0.8;
+}
+.reference-player-loading {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(248, 241, 223, 0.45);
+  border-top-color: #f8f1df;
+  border-radius: 50%;
+  animation: reference-player-spin 700ms linear infinite;
+}
+.reference-player-error {
+  position: absolute;
+  right: 7%;
+  bottom: 8%;
+  color: #7d3425;
+  font: 600 8px var(--font-sans);
+}
+.reference-player.is-playing .reference-reel {
+  animation: reference-reel-spin 900ms linear infinite;
+}
+@keyframes reference-reel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes reference-player-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .reference-sun {
   position: absolute;

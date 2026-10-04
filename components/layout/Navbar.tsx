@@ -41,6 +41,7 @@ export function Navbar() {
           aria-label="Anurag — Home"
         >
           <span className="reference-avatar">A</span>
+          
         </Link>
 
         {/* Desktop Links */}
