@@ -22,11 +22,18 @@ const AVATAR_COLORS = [
   { bg: "var(--accent-blue-soft)", border: "var(--accent-blue)", text: "var(--text-primary)" },
 ];
 
-let colorIndex = 0;
+function getColorIndex(name: string): number {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = (hash << 5) - hash + name.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash) % AVATAR_COLORS.length;
+}
 
 export function TestimonialCard({ name, role, quote }: TestimonialCardProps) {
   const initials = getInitials(name);
-  const colors = AVATAR_COLORS[colorIndex++ % AVATAR_COLORS.length];
+  const colors = AVATAR_COLORS[getColorIndex(name)];
 
   return (
     <div
