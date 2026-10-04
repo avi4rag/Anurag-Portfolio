@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+/* =============================================
+   DESIGN TOKENS — Anurag Portfolio
+   Inspired by zainabkabira.com aesthetic:
+   warm cream backgrounds, soft pastels, 
+   rounded corners, gentle animations
+   ============================================= */
+
+:root {
+  /* Background */
+  --bg-primary: #faf8f4;       /* warm cream / off-white */
+  --bg-secondary: #f4f0e8;     /* slightly deeper cream for cards */
+  --bg-card: #fff9f0;          /* card background */
+  --bg-overlay: rgba(250, 248, 244, 0.92);
+
+  /* Text */
+  --text-primary: #1a1814;     /* dark charcoal */
+  --text-secondary: #4a4540;   /* muted charcoal */
+  --text-muted: #9a928a;       /* soft grey-brown */
+  --text-inverse: #faf8f4;
+
+  /* Accent Palette — soft pastels */
+  --accent-yellow: #f5c842;    /* warm golden yellow */
+  --accent-yellow-soft: #fdeea0; /* light pastel yellow */
+  --accent-blue: #7ec8e3;      /* soft sky blue */
+  --accent-blue-soft: #d6f0fa; /* very light sky */
+  --accent-pink: #f2a0a0;      /* blush pink */
+  --accent-pink-soft: #fce4e4; /* very light blush */
+  --accent-mint: #a8d8b9;      /* soft mint green */
+  --accent-peach: #f5c5a3;     /* soft peach */
+  --accent-peach-soft: #fce8d8;/* very light peach */
+  
+  /* Primary accent used for CTAs, highlights */
+  --accent-primary: #e8a455;   /* warm amber/terracotta */
+  --accent-primary-soft: #fae6c8;
+
+  /* Border */
+  --border-light: #e8e2d8;
+  --border-medium: #d4cdc0;
+  
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(26,24,20,0.06);
+  --shadow-md: 0 4px 16px rgba(26,24,20,0.08);
+  --shadow-lg: 0 8px 32px rgba(26,24,20,0.10);
+  --shadow-hover: 0 12px 40px rgba(26,24,20,0.14);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Spacing rhythm */
+  --section-padding: clamp(64px, 8vw, 120px);
+
+  /* Animation */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 500ms;
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-yellow-soft: var(--accent-yellow-soft);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-soft: var(--accent-blue-soft);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-pink-soft: var(--accent-pink-soft);
+  --color-accent-mint: var(--accent-mint);
+  --color-accent-peach: var(--accent-peach);
+  --color-accent-peach-soft: var(--accent-peach-soft);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-soft: var(--accent-primary-soft);
+  --color-border-light: var(--border-light);
+  --color-border-medium: var(--border-medium);
+  --font-sans: var(--font-plus-jakarta);
+  --font-display: var(--font-fraunces);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+/* =============================================
+   BASE STYLES
+   ============================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Display text for hero */
+.display-text {
+  font-family: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.section-heading {
+  font-family: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+/* =============================================
+   SELECTION
+   ============================================= */
+
+::selection {
+  background: var(--accent-yellow-soft);
+  color: var(--text-primary);
+}
+
+/* =============================================
+   FOCUS STATES — Accessibility
+   ============================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =============================================
+   SCROLL ANIMATIONS — Reduced Motion Fallback
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+
+.section-padding {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.container-custom {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 5vw, 48px);
+}
+
+/* Tag/pill utility */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+/* Card base */
+.card-base {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--duration-normal) var(--ease-smooth),
+              transform var(--duration-normal) var(--ease-smooth);
+}
+
+.card-base:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* Button styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-smooth);
+  border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 2px solid var(--border-medium);
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  background: var(--bg-secondary);
+  transform: translateY(-1px);
+}
+
+/* Grain texture overlay for depth */
+.noise-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* Line decoration */
+.decorative-line {
+  display: block;
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent-primary);
+}
