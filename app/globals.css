@@ -517,7 +517,7 @@ h6 {
 .reference-vertical {
   position: absolute;
   top: 75px;
-  left: -53px;
+  left: -64px;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   color: #fff8ea;
