@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const keyFeatures = [
-  "Scheduled news ingestion every 2 hours, verified by 158 automated tests across 8 test suites",
+  "Scheduled ingestion every 2 hours, verified by 158 automated tests across 8 suites",
   "12-concept engineering suite shipped in one release: Prisma/PostgreSQL with 1NF–3NF normalization and ACID transactions, a Redis cache-aside layer, Socket.IO real-time broadcasts, Multer file uploads, and SQL/NoSQL/XSS input sanitization — backed by a dedicated 10/10 test suite",
   "Containerized with multi-stage Docker builds and Docker Compose across Postgres, Redis, and MongoDB services",
   "Shipped via GitHub Actions CI across 37 commits",
