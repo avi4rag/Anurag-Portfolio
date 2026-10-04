@@ -519,6 +519,7 @@ h6 {
   top: 75px;
   left: -64px;
   writing-mode: vertical-rl;
+  white-space: nowrap;
   transform: rotate(180deg);
   color: #fff8ea;
   font: 600 11px var(--font-sans);
