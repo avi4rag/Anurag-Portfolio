@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MapPin, Minus, Play, Sun } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 
 const creatorWords = ["builds", "scales", "deploys"];
 
@@ -23,7 +23,17 @@ const itemVariants = {
 };
 
 export function HeroSection() {
+  const heroRef = useRef<HTMLElement>(null);
   const [wordIndex, setWordIndex] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, -52]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.72]);
+  const sunY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const cloudY = useTransform(scrollYProgress, [0, 1], [0, 48]);
+  const waveY = useTransform(scrollYProgress, [0, 1], [0, -28]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -34,7 +44,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="reference-hero" aria-label="Hero section">
+    <section ref={heroRef} className="reference-hero" aria-label="Hero section">
       <div className="reference-location-label">
         <MapPin size={17} /> Jaipur, India
       </div>
@@ -49,14 +59,16 @@ export function HeroSection() {
           <Sun size={18} />
         </button>
       </div>
-      <div className="reference-sun" aria-hidden="true" />
-      <div className="reference-cloud reference-cloud-top" aria-hidden="true" />
-      <div
+      <motion.div className="reference-sun" style={{ y: sunY }} aria-hidden="true" />
+      <motion.div className="reference-cloud reference-cloud-top" style={{ y: cloudY }} aria-hidden="true" />
+      <motion.div
         className="reference-cloud reference-cloud-right"
+        style={{ y: cloudY }}
         aria-hidden="true"
       />
       <motion.div
         className="reference-copy"
+        style={{ y: copyY, opacity: copyOpacity }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -106,7 +118,7 @@ export function HeroSection() {
         <br />
         <span>Honors</span>
       </div> */}
-      <div className="reference-wave" aria-hidden="true" />
+      <motion.div className="reference-wave" style={{ y: waveY }} aria-hidden="true" />
       <div className="reference-scroll">Scroll</div>
     </section>
   );
