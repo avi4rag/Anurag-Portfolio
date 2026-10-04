@@ -21,15 +21,7 @@ const contactMethods = [
     action: "Send email",
     accent: "var(--accent-yellow-soft)",
   },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+91 6205060900",
-    href: "tel:+916205060900",
-    description: "Direct mobile line for urgent inquiries.",
-    action: "Call",
-    accent: "var(--accent-blue-soft)",
-  },
+  
   {
     icon: Linkedin,
     label: "LinkedIn",
