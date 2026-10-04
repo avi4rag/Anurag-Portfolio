@@ -16,6 +16,10 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://anurag-portfolio.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Anurag — Full-Stack Developer",
   description:
     "Full-Stack Developer and Software Product Engineering student who designs, ships, and tests real production web apps — from AI-integrated platforms to real-time dashboards.",
