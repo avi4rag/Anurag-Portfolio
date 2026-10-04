@@ -14,7 +14,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
 export function HeroSection() {
@@ -148,7 +148,7 @@ export function HeroSection() {
             className="hidden lg:flex items-center justify-center h-[500px] relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <HeroIllustration />
           </motion.div>
