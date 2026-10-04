@@ -61,9 +61,6 @@ export function HeroSection() {
       <div className="reference-location-label">
         <MapPin size={17} /> Jaipur, India
       </div>
-      <div className="reference-status">
-        FPS&nbsp; N/A&nbsp; | &nbsp;LAT&nbsp; N/A
-      </div>
       <div className="reference-theme-controls">
         <button aria-label="Reduce motion">
           <Minus size={20} />

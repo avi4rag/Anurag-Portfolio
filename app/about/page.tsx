@@ -94,18 +94,18 @@ const education = [
   {
     degree: "B.Tech, Computer Science Engineering — Software Product Engineering (Kalvium)",
     institution: "JECRC University, Jaipur",
-    grade: "CGPA: 9.24/10.00",
+    grade: "CGPA(1st Year): 9.24/10.00",
     year: "2025–2029",
   },
   {
     degree: "Class XII",
     institution: "Kids Camp International School",
-    year: "2025",
+    year: "2023-2024",
   },
   {
     degree: "Class X",
     institution: "Kendriya Vidyalaya",
-    year: "2022",
+    year: "2021-2022",
   },
 ];
 
