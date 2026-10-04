@@ -298,6 +298,8 @@ h6 {
 .reference-hero {
   position: relative;
   min-height: 100svh;
+  --hero-copy-left: clamp(24px, 24vw, 360px);
+  --hero-copy-top: clamp(170px, 26vh, 280px);
   overflow: hidden;
   isolation: isolate;
   color: #fff8ed;
@@ -454,8 +456,8 @@ h6 {
 }
 .reference-copy {
   position: absolute;
-  top: 26%;
-  left: 24%;
+  top: var(--hero-copy-top);
+  left: var(--hero-copy-left);
   z-index: 3;
 }
 .reference-kicker {
@@ -478,15 +480,15 @@ h6 {
   z-index: 2;
   margin: 0;
   color: #fff8ea;
-  font: 600 clamp(70px, 10vw, 142px)/0.83 var(--font-fraunces);
+  font: 600 clamp(58px, 10vw, 142px)/0.83 var(--font-fraunces);
   letter-spacing: -0.055em;
 }
 .reference-word-slot {
   position: relative;
   display: inline-block;
-  width: 7.5ch;
+  width: min(7.5ch, calc(100vw - var(--hero-copy-left) - 24px));
   height: 0.9em;
-  margin-left: 56%;
+  margin-left: clamp(72px, 30vw, 430px);
   overflow: hidden;
   color: #fff4dd;
 }
@@ -504,7 +506,9 @@ h6 {
   display: inline-block;
   color: #fff4dd;
   transform-origin: center bottom;
-  transition: color 200ms ease, transform 200ms ease;
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
 }
 .headline-char:hover {
   color: #ffd329;
@@ -525,19 +529,21 @@ h6 {
   top: 168px;
   left: -12px;
   z-index: 1;
-  width: 382px;
-  height: 115px;
-  border: 7px solid #e9e4d9;
+  width: min(382px, 42vw);
+  aspect-ratio: 382 / 115;
+  height: auto;
+  border: clamp(4px, 0.5vw, 7px) solid #e9e4d9;
   border-radius: 60px;
   background: #d7d3c9;
   box-shadow: 0 12px 15px rgba(39, 77, 104, 0.26);
 }
 .reference-reel {
   position: absolute;
-  top: 6px;
-  width: 82px;
-  height: 82px;
-  border: 5px solid #b7b5ad;
+  top: 7%;
+  width: 22%;
+  aspect-ratio: 1;
+  height: auto;
+  border: clamp(3px, 0.35vw, 5px) solid #b7b5ad;
   border-radius: 50%;
   background: repeating-radial-gradient(circle, #2f2f2e 0 3px, #111 4px 6px);
   box-shadow: inset 0 0 0 8px #242422;
@@ -545,47 +551,48 @@ h6 {
 .reference-reel::after {
   content: "";
   position: absolute;
-  inset: 31px;
+  inset: 37%;
   border-radius: 50%;
   background: #d8ca83;
   box-shadow: 0 0 0 4px #333;
 }
 .reference-reel-left {
-  left: 7px;
+  left: 2%;
 }
 .reference-reel-right {
-  right: 7px;
+  right: 2%;
 }
 .reference-player-label {
   position: absolute;
-  top: 11px;
-  left: 105px;
+  top: 10%;
+  left: 27.5%;
   color: #433f38;
-  font: 10px monospace;
+  font: clamp(7px, 0.7vw, 10px) monospace;
 }
 .reference-player-label small {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 144px;
-  margin-top: 7px;
-  font-size: 8px;
+  width: 38%;
+  margin-top: 6%;
+  font-size: clamp(6px, 0.55vw, 8px);
 }
 .reference-player-label i {
   display: block;
-  width: 82px;
-  height: 4px;
+  width: 57%;
+  height: clamp(2px, 0.25vw, 4px);
   border-radius: 4px;
   background: #655f56;
 }
 .reference-player button {
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: 9%;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 9%;
+  aspect-ratio: 1;
+  height: auto;
   border: 0;
   border-radius: 50%;
   color: #f8f1df;
@@ -596,8 +603,9 @@ h6 {
   position: absolute;
   top: 9%;
   right: 9%;
-  width: 160px;
-  height: 160px;
+  width: clamp(110px, 11vw, 160px);
+  aspect-ratio: 1;
+  height: auto;
   border-radius: 50%;
   background: repeating-linear-gradient(
     135deg,
@@ -699,7 +707,16 @@ h6 {
   font: 10px var(--font-sans);
   transform: translateX(50%);
 }
+@media (max-width: 1100px) {
+  .reference-player {
+    top: 240px;
+  }
+}
 @media (max-width: 700px) {
+  .reference-hero {
+    --hero-copy-left: 8%;
+    --hero-copy-top: 31%;
+  }
   .reference-location-label {
     left: 18px;
     top: 92px;
@@ -713,14 +730,14 @@ h6 {
     left: 11%;
   }
   .reference-copy h1 {
-    font-size: clamp(56px, 16vw, 90px);
+    font-size: clamp(48px, 13vw, 90px);
   }
   .reference-word-slot {
-    margin-left: 35%;
+    margin-left: clamp(48px, 25vw, 120px);
   }
   .reference-player {
-    transform: scale(0.78);
-    transform-origin: left top;
+    top: clamp(145px, 32vw, 170px);
+    width: min(382px, 82vw);
   }
   .reference-vertical {
     display: none;
@@ -737,5 +754,36 @@ h6 {
   .reference-wave {
     bottom: -7%;
     height: 25%;
+  }
+}
+
+@media (max-width: 480px) {
+  .reference-hero {
+    --hero-copy-left: 6%;
+    --hero-copy-top: 30%;
+  }
+
+  .reference-location-label,
+  .reference-status {
+    font-size: 10px;
+  }
+
+  .reference-copy h1 {
+    font-size: clamp(44px, 12.5vw, 64px);
+  }
+
+  .reference-word-slot {
+    margin-left: 20vw;
+  }
+
+  .reference-player {
+    top: 155px;
+    width: 82vw;
+  }
+
+  .reference-sun {
+    top: 17%;
+    right: -12%;
+    width: 96px;
   }
 }
