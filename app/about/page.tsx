@@ -121,6 +121,7 @@ const hobbies = [
 ];
 
 const placeholderImages = [
+  { seed: "anurag-1", alt: "Placeholder lifestyle photo 1" },
   { seed: "anurag-2", alt: "Placeholder lifestyle photo 2" },
   { seed: "anurag-3", alt: "Placeholder lifestyle photo 3" },
   { seed: "anurag-4", alt: "Placeholder lifestyle photo 4" },
