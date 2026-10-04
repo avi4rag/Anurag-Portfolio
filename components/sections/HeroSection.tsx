@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { MapPin, Minus, Play, Sun } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
+const creatorWords = ["builds", "scales", "deploys"];
 
 const containerVariants = {
   hidden: {},
@@ -20,6 +23,16 @@ const itemVariants = {
 };
 
 export function HeroSection() {
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setWordIndex((currentIndex) => (currentIndex + 1) % creatorWords.length);
+    }, 2400);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <section className="reference-hero" aria-label="Hero section">
       <div className="reference-location-label">
@@ -52,9 +65,22 @@ export function HeroSection() {
           <span /> HELLO, I&apos;M ANURAG A —
         </motion.p>
         <motion.h1 variants={itemVariants}>
-          Full-Stack
+          Creator who
           <br />
-          <span>Developer</span>
+          <span className="reference-word-slot" aria-live="polite">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={creatorWords[wordIndex]}
+                className="reference-word"
+                initial={{ opacity: 0, y: "100%" }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: "-100%" }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {creatorWords[wordIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
         </motion.h1>
         <motion.div variants={itemVariants} className="reference-player">
           <div className="reference-reel reference-reel-left" />
