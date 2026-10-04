@@ -2,9 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MapPin, Minus, Play, Sun } from "lucide-react";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 const creatorWords = ["builds", "scales", "deploys"];
+
+function renderHeadlineCharacters(text: string) {
+  return [...text].map((character, index) => (
+    <span className="headline-char" key={`${character}-${index}`}>
+      {character === " " ? "\u00a0" : character}
+    </span>
+  ));
+}
 
 const containerVariants = {
   hidden: {},
@@ -59,8 +72,16 @@ export function HeroSection() {
           <Sun size={18} />
         </button>
       </div>
-      <motion.div className="reference-sun" style={{ y: sunY }} aria-hidden="true" />
-      <motion.div className="reference-cloud reference-cloud-top" style={{ y: cloudY }} aria-hidden="true" />
+      <motion.div
+        className="reference-sun"
+        style={{ y: sunY }}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="reference-cloud reference-cloud-top"
+        style={{ y: cloudY }}
+        aria-hidden="true"
+      />
       <motion.div
         className="reference-cloud reference-cloud-right"
         style={{ y: cloudY }}
@@ -77,20 +98,21 @@ export function HeroSection() {
           <span /> HELLO, I&apos;M ANURAG A —
         </motion.p>
         <motion.h1 variants={itemVariants}>
-          Creator who
+          <span className="headline-line">
+            {renderHeadlineCharacters("Creator who")}
+          </span>
           <br />
           <span className="reference-word-slot" aria-live="polite">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={creatorWords[wordIndex]}
-                className="reference-word"
+                className="headline-word"
                 initial={{ opacity: 0, y: "100%" }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: "-100%" }}
-                whileHover={{ color: "#ffd329", y: -12, scale: 1.03 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
-                {creatorWords[wordIndex]}
+                {renderHeadlineCharacters(creatorWords[wordIndex])}
               </motion.span>
             </AnimatePresence>
           </span>
@@ -118,7 +140,11 @@ export function HeroSection() {
         <br />
         <span>Honors</span>
       </div> */}
-      <motion.div className="reference-wave" style={{ y: waveY }} aria-hidden="true" />
+      <motion.div
+        className="reference-wave"
+        style={{ y: waveY }}
+        aria-hidden="true"
+      />
       <div className="reference-scroll">Scroll</div>
     </section>
   );
