@@ -30,12 +30,18 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header role="banner" className={`reference-nav ${scrolled ? "reference-nav-scrolled" : ""}`}>
-      <nav
-        className="reference-nav-inner"
-        aria-label="Main navigation"
-      >
-        <Link href="/" className="reference-location" aria-label="Anurag — Home"><span className="reference-avatar">A</span></Link>
+    <header
+      role="banner"
+      className={`reference-nav ${scrolled ? "reference-nav-scrolled" : ""}`}
+    >
+      <nav className="reference-nav-inner" aria-label="Main navigation">
+        <Link
+          href="/"
+          className="reference-location"
+          aria-label="Anurag — Home"
+        >
+          <span className="reference-avatar">A</span>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="reference-links hidden md:flex">
@@ -44,7 +50,8 @@ export function Navbar() {
               <Link
                 href={link.href}
                 className={`reference-link ${
-                  pathname === link.href.split("#")[0] && !link.href.includes("#")
+                  pathname === link.href.split("#")[0] &&
+                  !link.href.includes("#")
                     ? "reference-link-active"
                     : ""
                 }`}
@@ -54,10 +61,7 @@ export function Navbar() {
             </li>
           ))}
           <li>
-            <a
-              href="mailto:avi4rag@gmail.com"
-              className="reference-contact"
-            >
+            <a href="mailto:avi4rag@gmail.com" className="reference-contact">
               <Mail size={15} /> Work with me
             </a>
           </li>
