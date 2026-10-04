@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MapPin, Minus, Play, Sun } from "lucide-react";
+import { MapPin, Minus, Pause, Play, Sun } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -10,6 +10,8 @@ import {
 } from "framer-motion";
 
 const creatorWords = ["builds", "scales", "deploys"];
+const audioSource =
+  "/audio/There Is a Light That Never Goes Out (2011 Remaster).mp3";
 
 function renderHeadlineCharacters(text: string) {
   return [...text].map((character, index) => (
@@ -37,7 +39,13 @@ const itemVariants = {
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [wordIndex, setWordIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [audioError, setAudioError] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -56,11 +64,103 @@ export function HeroSection() {
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const audio = new Audio(audioSource);
+    audio.preload = "metadata";
+    audioRef.current = audio;
+
+    const handleLoadedMetadata = () => setDuration(audio.duration || 0);
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const handlePlay = () => {
+      setIsPlaying(true);
+      setIsLoading(false);
+    };
+    const handlePause = () => setIsPlaying(false);
+    const handleWaiting = () => setIsLoading(true);
+    const handleCanPlay = () => setIsLoading(false);
+    const handleError = () => {
+      setIsPlaying(false);
+      setIsLoading(false);
+      setAudioError(true);
+    };
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setIsLoading(false);
+      setCurrentTime(audio.duration || 0);
+    };
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+    audio.addEventListener("waiting", handleWaiting);
+    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("error", handleError);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+      audio.removeEventListener("waiting", handleWaiting);
+      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("error", handleError);
+      audio.removeEventListener("ended", handleEnded);
+      audioRef.current = null;
+    };
+  }, []);
+
+  const togglePlayback = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    setAudioError(false);
+    if (audio.paused) {
+      if (audio.ended) audio.currentTime = 0;
+      setIsLoading(true);
+      try {
+        await audio.play();
+      } catch {
+        setIsLoading(false);
+        setAudioError(true);
+      }
+    } else {
+      audio.pause();
+    }
+  };
+
+  const seekAudio = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const audio = audioRef.current;
+    if (!audio || !duration) return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const position = Math.min(
+      Math.max((event.clientX - bounds.left) / bounds.width, 0),
+      1,
+    );
+    audio.currentTime = position * duration;
+    setCurrentTime(audio.currentTime);
+  };
+
+  const formatTime = (time: number) => {
+    if (!Number.isFinite(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${minutes}:${seconds}`;
+  };
+
+  const progress = duration ? Math.min((currentTime / duration) * 100, 100) : 0;
+
   return (
     <section ref={heroRef} className="reference-hero" aria-label="Hero section">
       <div className="reference-location-label">
         <MapPin size={17} /> Jaipur, India
       </div>
+     
       <div className="reference-theme-controls">
         <button aria-label="Reduce motion">
           <Minus size={20} />
@@ -114,19 +214,60 @@ export function HeroSection() {
             </AnimatePresence>
           </span>
         </motion.h1>
-        <motion.div variants={itemVariants} className="reference-player">
+        <motion.div
+          variants={itemVariants}
+          className={`reference-player ${isPlaying ? "is-playing" : ""}`}
+          data-audio-error={audioError || undefined}
+        >
           <div className="reference-reel reference-reel-left" />
           <div className="reference-player-label">
             My Soul in audio form
             <br />
-            <small>
-              0:00 <i /> 2:00
-            </small>
+            <small>{formatTime(currentTime)}</small>
+            <button
+              type="button"
+              className="reference-progress"
+              onClick={seekAudio}
+              role="slider"
+              aria-label="Seek audio"
+              aria-valuemin={0}
+              aria-valuemax={duration || 0}
+              aria-valuenow={currentTime}
+              aria-valuetext={`${formatTime(currentTime)} of ${formatTime(duration)}`}
+            >
+              <span className="reference-progress-track" />
+              <span
+                className="reference-progress-fill"
+                style={{ width: `${progress}%` }}
+              />
+              <span
+                className="reference-progress-knob"
+                style={{ left: `${progress}%` }}
+              />
+            </button>
+            <small>{formatTime(duration)}</small>
           </div>
           <div className="reference-reel reference-reel-right" />
-          <button aria-label="Play introduction">
-            <Play size={15} fill="currentColor" />
+          <button
+            type="button"
+            className="reference-play-button"
+            onClick={togglePlayback}
+            aria-label={isPlaying ? "Pause introduction" : "Play introduction"}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <span className="reference-player-loading" aria-hidden="true" />
+            ) : isPlaying ? (
+              <Pause size={15} fill="currentColor" />
+            ) : (
+              <Play size={15} fill="currentColor" />
+            )}
           </button>
+          {audioError && (
+            <span className="reference-player-error" role="status">
+              Audio unavailable
+            </span>
+          )}
         </motion.div>
         <motion.p variants={itemVariants} className="reference-vertical">
           SKETCH&nbsp; / &nbsp;CODE&nbsp; / &nbsp;LAUNCH
