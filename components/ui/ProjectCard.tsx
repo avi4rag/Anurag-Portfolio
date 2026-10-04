@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 interface ProjectCardProps {
   slug: string;
   title: string;
+  imageSrc: string;
   description: string;
   tags: string[];
   accentColor?: string;
@@ -23,6 +24,7 @@ const TAG_COLORS = [
 export function ProjectCard({
   slug,
   title,
+  imageSrc,
   description,
   tags,
   accentColor = "var(--accent-yellow-soft)",
@@ -50,16 +52,13 @@ export function ProjectCard({
         <div
           className="relative h-44 flex items-center justify-center overflow-hidden"
           style={{ background: accentColor + "80" }}
-          aria-hidden="true"
         >
-          {/* Abstract decorative blobs */}
-          <div
-            className="absolute w-24 h-24 rounded-full opacity-40 blur-2xl"
-            style={{ background: accentColor, top: "20%", left: "20%" }}
-          />
-          <div
-            className="absolute w-16 h-16 rounded-full opacity-30 blur-xl"
-            style={{ background: accentColor, bottom: "20%", right: "25%" }}
+          <img
+            src={imageSrc}
+            alt={`${title} project preview`}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            loading="lazy"
+            decoding="async"
           />
           {/* Project number */}
           <span
