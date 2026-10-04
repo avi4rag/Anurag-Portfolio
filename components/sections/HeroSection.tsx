@@ -75,6 +75,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: "100%" }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: "-100%" }}
+                whileHover={{ color: "#ffd329", y: -12, scale: 1.03 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
                 {creatorWords[wordIndex]}
