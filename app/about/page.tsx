@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const skillGroups = [
   {
     label: "Languages",
-    skills: ["Java", "Python", "C++", "JavaScript (ES6+)", "TypeScript"],
+    skills: ["Java", "Python", "SQL", "JavaScript (ES6+)", "TypeScript"],
     color: "var(--accent-yellow-soft)",
   },
   {
@@ -100,20 +100,18 @@ const education = [
   {
     degree: "Class XII",
     institution: "Kids Camp International School",
-    grade: "71.8%",
     year: "2025",
   },
   {
     degree: "Class X",
     institution: "Kendriya Vidyalaya",
-    grade: "85%",
     year: "2022",
   },
 ];
 
 const hobbies = [
   "Football",
-  "Table Tennis (district level, Kendriya Vidyalaya)",
+  "Table Tennis",
   "Reading & Philosophy",
   "Creative Writing",
   "Cinema",
