@@ -474,16 +474,29 @@ h6 {
   background: #ffd32d;
 }
 .reference-copy h1 {
+  position: relative;
+  z-index: 2;
   margin: 0;
   color: #fff8ea;
   font: 600 clamp(70px, 10vw, 142px)/0.83 var(--font-fraunces);
   letter-spacing: -0.055em;
 }
-.reference-copy h1 span {
-  padding-left: 42%;
+.reference-word-slot {
+  position: relative;
+  display: inline-block;
+  width: 7.5ch;
+  height: 0.9em;
+  margin-left: 42%;
+  overflow: hidden;
   color: #fff4dd;
 }
-.reference-copy h1 span::first-letter {
+.reference-word {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: block;
+  white-space: nowrap;
+}
+.reference-word::first-letter {
   color: #a35e18;
 }
 .reference-vertical {
@@ -498,8 +511,9 @@ h6 {
 }
 .reference-player {
   position: absolute;
-  top: 155px;
-  left: 0;
+  top: 168px;
+  left: -12px;
+  z-index: 1;
   width: 382px;
   height: 115px;
   border: 7px solid #e9e4d9;
@@ -690,8 +704,8 @@ h6 {
   .reference-copy h1 {
     font-size: clamp(56px, 16vw, 90px);
   }
-  .reference-copy h1 span {
-    padding-left: 27%;
+  .reference-word-slot {
+    margin-left: 27%;
   }
   .reference-player {
     transform: scale(0.78);

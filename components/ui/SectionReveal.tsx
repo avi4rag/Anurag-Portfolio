@@ -21,6 +21,7 @@ export function SectionReveal({
 
   const initial = {
     opacity: 0,
+    scale: 0.985,
     y: direction === "up" ? 32 : 0,
     x: direction === "left" ? -32 : direction === "right" ? 32 : 0,
   };
@@ -29,11 +30,11 @@ export function SectionReveal({
     <motion.div
       ref={ref}
       initial={initial}
-      animate={isInView ? { opacity: 1, y: 0, x: 0 } : initial}
+      animate={isInView ? { opacity: 1, scale: 1, y: 0, x: 0 } : initial}
       transition={{
-        duration: 0.55,
+        duration: 0.7,
         delay,
-        ease: [0.25, 0.1, 0.25, 1] as const,
+        ease: [0.22, 1, 0.36, 1] as const,
       }}
       className={className}
     >
