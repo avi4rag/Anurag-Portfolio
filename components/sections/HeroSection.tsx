@@ -221,31 +221,32 @@ export function HeroSection() {
         >
           <div className="reference-reel reference-reel-left" />
           <div className="reference-player-label">
-            My Soul in audio form
-            <br />
-            <small>{formatTime(currentTime)}</small>
-            <button
-              type="button"
-              className="reference-progress"
-              onClick={seekAudio}
-              role="slider"
-              aria-label="Seek audio"
-              aria-valuemin={0}
-              aria-valuemax={duration || 0}
-              aria-valuenow={currentTime}
-              aria-valuetext={`${formatTime(currentTime)} of ${formatTime(duration)}`}
-            >
-              <span className="reference-progress-track" />
-              <span
-                className="reference-progress-fill"
-                style={{ width: `${progress}%` }}
-              />
-              <span
-                className="reference-progress-knob"
-                style={{ left: `${progress}%` }}
-              />
-            </button>
-            <small>{formatTime(duration)}</small>
+            <span className="reference-player-title">My Soul in audio form</span>
+            <div className="reference-cassette-content">
+              <button
+                type="button"
+                className="reference-progress"
+                onClick={seekAudio}
+                role="slider"
+                aria-label="Seek audio"
+                aria-valuemin={0}
+                aria-valuemax={duration || 0}
+                aria-valuenow={currentTime}
+                aria-valuetext={`${formatTime(currentTime)} of ${formatTime(duration)}`}
+              >
+                <span className="reference-progress-track" />
+                <span
+                  className="reference-progress-fill"
+                  style={{ width: `${progress}%` }}
+                />
+                <span
+                  className="reference-progress-knob"
+                  style={{ left: `${progress}%` }}
+                />
+              </button>
+              <small>{formatTime(currentTime)}</small>
+              <small>{formatTime(duration)}</small>
+            </div>
           </div>
           <div className="reference-reel reference-reel-right" />
           <button

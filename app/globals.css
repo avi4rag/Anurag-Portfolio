@@ -480,15 +480,15 @@ h6 {
   z-index: 2;
   margin: 0;
   color: #fff8ea;
-  font: 600 clamp(58px, 10vw, 142px)/0.83 var(--font-fraunces);
+  font: 600 clamp(54px, 7.4vw, 118px)/0.88 var(--font-fraunces);
   letter-spacing: -0.055em;
 }
 .reference-word-slot {
   position: relative;
   display: inline-block;
-  width: min(7.5ch, calc(100vw - var(--hero-copy-left) - 24px));
+  width: 7.5ch;
   height: 0.9em;
-  margin-left: clamp(72px, 30vw, 430px);
+  margin-left: clamp(180px, 29vw, 410px);
   overflow: hidden;
   color: #fff4dd;
 }
@@ -529,7 +529,7 @@ h6 {
   top: 168px;
   left: -12px;
   z-index: 3;
-  width: min(382px, 42vw);
+  width: clamp(300px, 28vw, 382px);
   aspect-ratio: 382 / 115;
   height: auto;
   border: clamp(4px, 0.5vw, 7px) solid #e9e4d9;
@@ -564,27 +564,38 @@ h6 {
 }
 .reference-player-label {
   position: absolute;
-  top: 10%;
+  top: 12%;
   left: 27.5%;
   width: 45%;
+  height: 48%;
+  display: grid;
+  grid-template-rows: auto 1fr;
   color: #433f38;
   font: clamp(7px, 0.7vw, 10px) monospace;
 }
-.reference-player-label small {
-  position: absolute;
-  top: 68%;
+.reference-player-title {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: clamp(7px, 0.7vw, 10px);
+}
+.reference-cassette-content {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  column-gap: 6px;
+  min-width: 0;
+  margin-top: 7%;
+}
+.reference-cassette-content small {
   font-size: clamp(6px, 0.55vw, 8px);
-}
-.reference-player-label small:first-of-type {
-  left: 0;
-}
-.reference-player-label small:last-of-type {
-  right: 0;
+  line-height: 1;
 }
 .reference-progress {
-  position: absolute;
-  top: 39%;
-  left: 0;
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 1;
   width: 100%;
   height: clamp(8px, 1vw, 12px);
   padding: 0;
@@ -610,6 +621,14 @@ h6 {
 .reference-progress-fill {
   right: auto;
   background: #3d3a2d;
+}
+.reference-cassette-content small:first-of-type {
+  grid-column: 1;
+  grid-row: 2;
+}
+.reference-cassette-content small:last-of-type {
+  grid-column: 3;
+  grid-row: 2;
 }
 .reference-progress-knob {
   position: absolute;
@@ -807,14 +826,15 @@ h6 {
     left: 11%;
   }
   .reference-copy h1 {
-    font-size: clamp(48px, 13vw, 90px);
+    font-size: clamp(46px, 11.5vw, 78px);
   }
   .reference-word-slot {
-    margin-left: clamp(48px, 25vw, 120px);
+    width: 7.5ch;
+    margin-left: clamp(48px, 22vw, 120px);
   }
   .reference-player {
     top: clamp(145px, 32vw, 170px);
-    width: min(382px, 82vw);
+    width: min(340px, 78vw);
   }
   .reference-vertical {
     display: none;
@@ -846,7 +866,7 @@ h6 {
   }
 
   .reference-copy h1 {
-    font-size: clamp(44px, 12.5vw, 64px);
+    font-size: clamp(40px, 11.5vw, 58px);
   }
 
   .reference-word-slot {
@@ -855,7 +875,7 @@ h6 {
 
   .reference-player {
     top: 155px;
-    width: 82vw;
+    width: min(310px, 78vw);
   }
 
   .reference-sun {
