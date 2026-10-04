@@ -1,4 +1,5 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { Github } from "@/components/ui/Icons";
 
 interface CaseStudyHeaderProps {
   title: string;

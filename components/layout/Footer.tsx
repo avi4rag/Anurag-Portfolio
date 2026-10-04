@@ -2,11 +2,9 @@ import Link from "next/link";
 import {
   Mail,
   Phone,
-  Linkedin,
-  Github,
-  Twitter,
   ArrowUpRight,
 } from "lucide-react";
+import { Linkedin, Github, Twitter } from "@/components/ui/Icons";
 
 const socialLinks = [
   {
