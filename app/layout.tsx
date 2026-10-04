@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SkipToContent } from "@/components/ui/SkipToContent";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -64,6 +65,7 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" style={{ background: "var(--bg-primary)" }}>
+        <SkipToContent />
         <ScrollProgress />
         {children}
       </body>

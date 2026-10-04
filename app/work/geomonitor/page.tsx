@@ -22,7 +22,7 @@ export default function GeoMonitorPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         <CaseStudyHeader
           title="GeoMonitor"
           tagline="AI-powered geopolitical intelligence platform turning live news into structured, cross-domain risk analysis"

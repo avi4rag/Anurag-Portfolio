@@ -63,7 +63,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Header */}
         <div
           className="pt-32 pb-16 relative overflow-hidden"

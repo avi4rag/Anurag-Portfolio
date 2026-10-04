@@ -21,7 +21,7 @@ export default function StudyShieldPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         <CaseStudyHeader
           title="StudyShield"
           tagline="Student early-warning dashboard that flags at-risk students from quiz and login activity"

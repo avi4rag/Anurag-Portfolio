@@ -23,7 +23,7 @@ export default function OrbitPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         <CaseStudyHeader
           title="Orbit"
           tagline="Goal-manifestation app with on-device binaural audio and AI-guided affirmations"
