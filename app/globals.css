@@ -486,7 +486,7 @@ h6 {
   display: inline-block;
   width: 7.5ch;
   height: 0.9em;
-  margin-left: 42%;
+  margin-left: 56%;
   overflow: hidden;
   color: #fff4dd;
 }
@@ -705,7 +705,7 @@ h6 {
     font-size: clamp(56px, 16vw, 90px);
   }
   .reference-word-slot {
-    margin-left: 27%;
+    margin-left: 35%;
   }
   .reference-player {
     transform: scale(0.78);
