@@ -21,7 +21,7 @@ export default function DivyaSetuPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Note: No GitHub button on this page — repo not public */}
         <CaseStudyHeader
           title="Divya Setu"

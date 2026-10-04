@@ -131,7 +131,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Hero */}
         <div
           className="pt-32 pb-16 relative overflow-hidden"
