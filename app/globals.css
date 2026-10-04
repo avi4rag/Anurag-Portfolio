@@ -810,6 +810,9 @@ h6 {
   }
 }
 @media (max-width: 700px) {
+  .reference-nav {
+    position: absolute;
+  }
   .reference-hero {
     --hero-copy-left: 8%;
     --hero-copy-top: 31%;
@@ -831,7 +834,7 @@ h6 {
   }
   .reference-word-slot {
     width: 7.5ch;
-    margin-left: clamp(48px, 22vw, 120px);
+    margin-left: clamp(150px, 40vw, 220px);
   }
   .reference-player {
     top: clamp(145px, 32vw, 170px);
@@ -871,7 +874,7 @@ h6 {
   }
 
   .reference-word-slot {
-    margin-left: 20vw;
+    margin-left: clamp(150px, 40vw, 190px);
   }
 
   .reference-player {

@@ -7,6 +7,7 @@ const projects = [
   {
     slug: "geomonitor",
     title: "GeoMonitor",
+    imageSrc: "/project/GeoMonitor_ Image.png",
     description:
       "AI-powered geopolitical intelligence platform turning live news into structured, cross-domain risk analysis",
     tags: ["React", "Node.js", "PostgreSQL", "Docker", "Gemini API"],
@@ -15,6 +16,7 @@ const projects = [
   {
     slug: "studyshield",
     title: "StudyShield",
+    imageSrc: "/project/StudyShield.png",
     description:
       "Student early-warning dashboard that flags at-risk students from quiz and login activity",
     tags: ["Next.js", "Prisma", "PostgreSQL", "Auth.js"],
@@ -23,6 +25,7 @@ const projects = [
   {
     slug: "orbit",
     title: "Orbit",
+    imageSrc: "/project/Orbit.png",
     description:
       "Goal-manifestation app with on-device binaural audio and AI-guided affirmations",
     tags: ["React", "Node.js", "MongoDB", "Web Audio API"],
@@ -31,6 +34,7 @@ const projects = [
   {
     slug: "divya-setu",
     title: "Divya Setu",
+    imageSrc: "/project/Divya Setu.png",
     description:
       "Smart darshan queue & crowd-management system for Somnath Temple, built at Smart India Hackathon",
     tags: ["React", "TypeScript", "Supabase"],
