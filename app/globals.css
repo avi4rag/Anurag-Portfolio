@@ -864,7 +864,7 @@ h6 {
 .about-hero {
   isolation: isolate;
   min-height: clamp(590px, 78svh, 760px);
-  padding-top: clamp(150px, 22vh, 210px);
+  padding-top: clamp(170px, 25vh, 220px);
   padding-bottom: clamp(150px, 18vh, 190px);
   background: #f8f5ec;
 }
@@ -1037,7 +1037,7 @@ h6 {
 @media (max-width: 700px) {
   .about-hero {
     min-height: 590px;
-    padding-top: 142px;
+    padding-top: 148px;
     padding-bottom: 130px;
   }
 

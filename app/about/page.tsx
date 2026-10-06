@@ -135,12 +135,12 @@ export default function AboutPage() {
           className="about-hero pt-32 pb-16 relative overflow-hidden"
           style={{
             background:
-              "radial-gradient(circle at 82% 8%, rgba(255, 244, 199, 0.72), transparent 34%), radial-gradient(circle at 8% 82%, rgba(220, 236, 244, 0.34), transparent 42%), linear-gradient(135deg, #faf7f0 0%, #f8f4ea 56%, #f5f4ec 100%)",
+              "radial-gradient(circle at 80% 12%, rgba(246, 230, 163, 0.58), transparent 29%), radial-gradient(circle at 10% 78%, rgba(207, 231, 243, 0.5), transparent 38%), radial-gradient(circle at 58% 67%, rgba(244, 217, 210, 0.2), transparent 31%), radial-gradient(circle at 94% 76%, rgba(221, 233, 220, 0.36), transparent 32%), linear-gradient(135deg, #faf7f0 0%, #f8f5ec 58%, #f6f3ea 100%)",
           }}
           aria-label="About page header"
         >
           <div
-                "radial-gradient(circle at 80% 12%, rgba(246, 230, 163, 0.58), transparent 29%), radial-gradient(circle at 10% 78%, rgba(207, 231, 243, 0.5), transparent 38%), radial-gradient(circle at 58% 67%, rgba(244, 217, 210, 0.2), transparent 31%), radial-gradient(circle at 94% 76%, rgba(221, 233, 220, 0.36), transparent 32%), linear-gradient(135deg, #faf7f0 0%, #f8f5ec 58%, #f6f3ea 100%)",
+            className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-30 blur-3xl pointer-events-none"
             style={{ background: "#fff4c7", opacity: 0.18, transform: "translate(30%,-30%)" }}
             aria-hidden="true"
           />
@@ -164,7 +164,7 @@ export default function AboutPage() {
             </p>
             <h1
               className="display-text mb-6"
-              style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
+              style={{ fontSize: "clamp(52px, 7vw, 92px)" }}
             >
               Hey again 👋
             </h1>
