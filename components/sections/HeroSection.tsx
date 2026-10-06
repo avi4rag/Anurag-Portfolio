@@ -160,7 +160,7 @@ export function HeroSection() {
       <div className="reference-location-label">
         <MapPin size={17} /> Jaipur, India
       </div>
-     
+
       <div className="reference-theme-controls">
         <button aria-label="Reduce motion">
           <Minus size={20} />
@@ -221,7 +221,9 @@ export function HeroSection() {
         >
           <div className="reference-reel reference-reel-left" />
           <div className="reference-player-label">
-            <span className="reference-player-title">My Soul in audio form</span>
+            <span className="reference-player-title">
+              My Soul in audio form
+            </span>
             <div className="reference-cassette-content">
               <button
                 type="button"

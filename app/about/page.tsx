@@ -132,15 +132,29 @@ export default function AboutPage() {
       <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Hero */}
         <div
-          className="pt-32 pb-16 relative overflow-hidden"
-          style={{ background: "var(--accent-yellow-soft)" }}
+          className="about-hero pt-32 pb-16 relative overflow-hidden"
+          style={{
+            background:
+              "radial-gradient(circle at 80% 12%, rgba(246, 230, 163, 0.58), transparent 29%), radial-gradient(circle at 10% 78%, rgba(207, 231, 243, 0.5), transparent 38%), radial-gradient(circle at 58% 67%, rgba(244, 217, 210, 0.2), transparent 31%), radial-gradient(circle at 94% 76%, rgba(221, 233, 220, 0.36), transparent 32%), linear-gradient(135deg, #faf7f0 0%, #f8f5ec 58%, #f6f3ea 100%)",
+          }}
           aria-label="About page header"
         >
           <div
             className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-30 blur-3xl pointer-events-none"
-            style={{ background: "var(--accent-yellow)", transform: "translate(30%,-30%)" }}
+            style={{ background: "#fff4c7", opacity: 0.18, transform: "translate(30%,-30%)" }}
             aria-hidden="true"
           />
+          <div className="about-hero-sun" aria-hidden="true" />
+          <div className="about-hero-cloud about-hero-cloud-top" aria-hidden="true" />
+          <div className="about-hero-cloud about-hero-cloud-right" aria-hidden="true" />
+          <div className="about-hero-doodle about-hero-doodle-left" aria-hidden="true" />
+            <div className="about-hero-shape about-hero-shape-cream" aria-hidden="true" />
+          <div className="about-hero-doodle about-hero-doodle-right" aria-hidden="true" />
+          <div className="about-hero-dot about-hero-dot-blue" aria-hidden="true" />
+          <div className="about-hero-dot about-hero-dot-yellow" aria-hidden="true" />
+          <div className="about-hero-shape about-hero-shape-blue" aria-hidden="true" />
+          <div className="about-hero-shape about-hero-shape-sage" aria-hidden="true" />
+          <div className="about-hero-wave" aria-hidden="true" />
           <div className="container-custom relative z-10">
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
@@ -150,7 +164,7 @@ export default function AboutPage() {
             </p>
             <h1
               className="display-text mb-6"
-              style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
+              style={{ fontSize: "clamp(52px, 7vw, 92px)" }}
             >
               Hey again 👋
             </h1>

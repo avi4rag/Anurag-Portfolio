@@ -658,7 +658,9 @@ h6 {
   transform: translateX(-50%);
   z-index: 4;
   cursor: pointer;
-  transition: background 180ms ease, transform 180ms ease;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
 }
 .reference-play-button:hover:not(:disabled) {
   background: #5c583e;
@@ -855,6 +857,225 @@ h6 {
   .reference-wave {
     bottom: -7%;
     height: 25%;
+  }
+}
+
+/* About hero atmosphere */
+.about-hero {
+  isolation: isolate;
+  min-height: clamp(590px, 78svh, 760px);
+  padding-top: clamp(170px, 25vh, 220px);
+  padding-bottom: clamp(150px, 18vh, 190px);
+  background: #f8f5ec;
+}
+.about-hero .container-custom {
+  max-width: 1100px;
+}
+
+.about-hero-sun {
+  position: absolute;
+  top: 10%;
+  right: 9%;
+  width: clamp(110px, 13vw, 180px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.62;
+  background: repeating-linear-gradient(
+    135deg,
+    #f6e6a3 0 9px,
+    transparent 9px 18px
+  );
+  z-index: 1;
+}
+
+.about-hero-cloud {
+  position: absolute;
+  width: clamp(150px, 18vw, 260px);
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 249, 239, 0.72);
+  filter: blur(1px);
+  z-index: 1;
+}
+
+.about-hero-cloud::before,
+.about-hero-cloud::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.about-hero-cloud::before {
+  left: 14%;
+  width: 38%;
+  height: 52px;
+}
+
+.about-hero-cloud::after {
+  right: 10%;
+  width: 40%;
+  height: 64px;
+}
+
+.about-hero-cloud-top {
+  top: 21%;
+  right: -3%;
+}
+
+.about-hero-cloud-right {
+  right: 8%;
+  bottom: 22%;
+  opacity: 0.52;
+  transform: scale(0.78);
+}
+
+.about-hero-doodle {
+  position: absolute;
+  width: 180px;
+  height: 110px;
+  border: 2px solid rgba(246, 196, 72, 0.42);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-hero-doodle-left {
+  top: 4%;
+  left: -32px;
+  transform: rotate(-24deg);
+}
+
+.about-hero-doodle-right {
+  right: -48px;
+  bottom: 19%;
+  border-color: rgba(124, 172, 165, 0.3);
+  transform: rotate(24deg) scale(0.76);
+}
+
+.about-hero-dot {
+  position: absolute;
+  width: 38px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.68;
+  z-index: 1;
+}
+
+.about-hero-dot-blue {
+  top: 42%;
+  left: 4%;
+  background: #cfe7f3;
+}
+
+.about-hero-dot-yellow {
+  top: 33%;
+  right: 27%;
+  width: 12px;
+  background: #f6e6a3;
+}
+
+.about-hero-shape {
+  position: absolute;
+  bottom: -7%;
+  width: 52%;
+  height: 32%;
+  border-radius: 55% 45% 0 0 / 42% 58% 0 0;
+  filter: blur(14px);
+  opacity: 0.48;
+  z-index: 0;
+}
+
+.about-hero-shape-blue {
+  left: -8%;
+  background: #cfe7f3;
+  transform: rotate(8deg);
+}
+
+.about-hero-shape-sage {
+  right: -8%;
+  background: #dde9dc;
+  transform: rotate(-8deg);
+}
+
+.about-hero-shape-cream {
+  right: 32%;
+  bottom: -12%;
+  width: 36%;
+  height: 24%;
+  background: #fff9ef;
+  opacity: 0.78;
+  filter: blur(8px);
+  transform: rotate(-2deg);
+}
+
+.about-hero-wave {
+  position: absolute;
+  right: -10%;
+  bottom: -58px;
+  left: -10%;
+  height: 170px;
+  border-radius: 52% 48% 0 0 / 42% 58% 0 0;
+  background: #fff9ef;
+  transform: rotate(-2deg);
+  z-index: 2;
+}
+.about-hero-wave::before {
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 36%;
+  width: 30%;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff9ef;
+}
+
+@media (max-width: 700px) {
+  .about-hero {
+    min-height: 590px;
+    padding-top: 148px;
+    padding-bottom: 130px;
+  }
+
+  .about-hero-sun {
+    top: 14%;
+    right: -10%;
+    width: 108px;
+  }
+
+  .about-hero-cloud-top {
+    top: 18%;
+  }
+
+  .about-hero-cloud-right,
+  .about-hero-doodle-right {
+    display: none;
+  }
+
+  .about-hero-doodle-left {
+    top: 8%;
+    left: -86px;
+    transform: rotate(-24deg) scale(0.7);
+  }
+
+  .about-hero-shape {
+    bottom: -8%;
+    width: 68%;
+    height: 23%;
+  }
+
+  .about-hero-shape-cream {
+    right: 22%;
+    width: 56%;
+  }
+
+  .about-hero-wave {
+    bottom: -48px;
+    height: 120px;
   }
 }
 
